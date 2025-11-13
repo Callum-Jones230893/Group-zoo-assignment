@@ -1,9 +1,9 @@
 const SIDEBAR = document.querySelector(".side_bar")
 
 let menuLabels = [
-  {group: "birds", text: "Birds:"},
-  {group: "mammals", text: "Mammals:"},
-  {group: "reptiles", text: "Reptiles:"}
+  {group: "bird", text: "Birds:"},
+  {group: "mammal", text: "Mammals:"},
+  {group: "reptile", text: "Reptiles:"}
 ]
 
 menuLabels.forEach(({group: groupName, text}) => {
@@ -68,6 +68,4 @@ animalGroup.forEach(group => {
 filteredGroup[group] = zooArray.filter(animal => animal.group === group)
 })
 
-// animalGroup.forEach(group => {
-//   filteredGroup[group] = zooArray.filter(animal => animal.group === group) , menuLabels.filter(label => label.group === group) 
-// })
+
