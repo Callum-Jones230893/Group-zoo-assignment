@@ -59,10 +59,6 @@ let zooArray = [
   yellowTailedCockatoo
 ]
 
-let animalGroup = ["bird", "mammal", "reptile"] 
-
-animalGroup.forEach(group => { zooArray.filter(animal => animal.group === group)})
-
 zooArray.forEach(animal => {
   let groupDiv = document.querySelector(`.${animal.group}`);
   if (groupDiv) {
