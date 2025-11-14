@@ -1,4 +1,4 @@
-const SIDEBAR = document.querySelector(".side_bar")
+const SIDEBAR = document.querySelector(".sidebar")
 
 let menuLabels = [
   {group: "bird", text: "Birds:"},
@@ -63,7 +63,7 @@ zooArray.forEach(animal => {
   let groupDiv = document.querySelector(`.${animal.group}`);
   if (groupDiv) {
     let animalGroup = document.createElement("div");
-    animalGroup.classList.add("animals", animal.name.replace(/\s+/g, "-")); // regex to replace white space
+    animalGroup.classList.add("sidebar_item", animal.name.replace(/\s+/g, "-")); // regex to replace white space
     animalGroup.textContent = animal.name;
     groupDiv.appendChild(animalGroup);
   }
