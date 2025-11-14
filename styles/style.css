@@ -97,10 +97,6 @@ main {
   border-radius: 20px;
 }
 
-/* .welcome_message {
-  padding: 28px;
-} */
-
 .footer {
   color: var(--background-secondary);
   text-align: center;
