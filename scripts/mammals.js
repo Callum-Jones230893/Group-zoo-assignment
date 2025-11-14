@@ -2,12 +2,11 @@ function Mammals(name, lifespan, group, food, description, length, weight, found
     this.name = name,
     this.lifespan = lifespan,
     this.group = group,
-    this.food = food
+    this.food = food,
     this.description = description,
     this.length = length,
     this.weight = weight,
     this.found = found
-    this.description =  description
 }
 
 let echidna = new Mammals ("Echidna", "50 years", "mammals", "insects such as ants and termites, beetle larvae and worms", "Echidnas, also called spiny anteaters, are walking contradictions. They are mammals, but they lay eggs. They are often classified as long- or sort-beaked, but don't have beaks at all, in the traditional sense; they have fleshy noses that can be either on the long side or rather short. They don't really look like true anteaters (Myrmecophaga tridactyla), either, and they are not closely related to them. They are spiny, though; their bodies are covered with hollow, barbless quills. Echidnas are monotremes, egg-laying mammals. The only other living monotreme is the platypus.", "76 cm", "10kg", "Throughout Australia.")
@@ -16,13 +15,18 @@ let quokka = new Mammals ("Quokka", "10 years", "mammals", "Plant eaters, they m
 
 let mammalArray = [echidna, tasmanianDevil, quokka]
 
-let sideMammals = document.querySelector(".side_bar")
+let sideMammals = document.querySelector(".sidebar")
 
-mammalArray.forEach (() =>  {
-    let mammalGroup = document.createElement("div")
-    mammalGroup.classList.add("side_bar", animal.name.replace(/\s+g/g, "-"));
-    mammalGroup.textContent = animal.name;
+console.log(mammalArray[1]) 
+
+mammalArray.forEach (animal =>  {
+   let mammalsGroup = document.createElement("div")
+    mammalsGroup.className = "sidebar_item"
+    mammalsGroup.textContent = animal.name
+    sideMammals.appendChild(mammalsGroup)
+
+    console.log(mammalArray[1])
     
 })
 
-console.log(Mammals)
+console.log(mammalArray)
