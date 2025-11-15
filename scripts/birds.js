@@ -44,8 +44,8 @@ let birdsArray = [
 const birdsContainer = document.querySelector("#birdsContainer")
 
 birdsArray.forEach(bird => {
-    const card = document.createElement("div");
-    card.classList.add("bird_card");
+    const birdCard = document.createElement("birdCard");
+    card.classList.add("bird__card");
     
     const img = document.createElement("img");
 

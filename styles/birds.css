@@ -129,20 +129,20 @@ main {
   margin-bottom:2rem;
 }
 
-.grid-container{
+.grid__container{
   flex:1;
   display:grid;
   grid-template-columns: repeat(3,minmax(200px,1fr));
   gap:1rem;
 }
 
-.bird_card{
+.bird__card{
   padding:1rem;
   border-radius:8px;
   background-color:var(--background-secondary);
 }
 
-.bird_card img{
+.bird__card img{
   width:100%;
   aspect-ratio: 1 / 1;
   object-fit : cover;
