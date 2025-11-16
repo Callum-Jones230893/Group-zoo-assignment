@@ -7,7 +7,7 @@ function Bird (name,lifespan,group,food,length,weight,found,image){
     this.length =length,
     this.weight = weight,
     this.found = found,
-    this.image =image,
+    this.image = image,
     this.detail = () => `${name} ${lifespan} ${group} ${food} ${length} ${weight} ${found} ${image} `
 };
 
@@ -41,61 +41,56 @@ let birdsArray = [
     "./images/birds/yellow-tailed-black-cockatoo.jpg"
     )]
 
+const sidebar = document.querySelector(".sidebar")
+
+birdsArray.forEach(bird => {
+    const item = document.createElement("div")
+    item.classList.add("sidebar_item")
+    item.textContent = bird.name
+
+    sidebar.appendChild(item)
+})
+
+
+
+//birds cards//
+
 const birdsContainer = document.querySelector("#birdsContainer")
 
 birdsArray.forEach(bird => {
-    const birdCard = document.createElement("birdCard");
-    card.classList.add("bird__card");
-    
-    const img = document.createElement("img");
+    const birdCard = document.createElement("div")
+    birdCard.classList.add("bird__card")
 
+    const img = document.createElement("img")
     img.src = bird.image;
     img.alt = bird.name;
 
-    const title = document.createElement("h3");
+    const title = document.createElement("h3")
     title.textContent = bird.name;
 
-    const btn = document.createElement("button");
-    btn.classList.add("read-more");
-    btn.textContent = "read more";
+    const btn = document.createElement("button")
+    btn.classList.add("readMore")
+    btn.textContent = "read more"
 
-    card.append(img,title,btn);
-    birdsContainer.appendChild(card);
-});
+    btn.addEventListener("click", () => {
+    openDetail(bird)
+    })
 
-const sidebar = document.querySelector(".sidebar");
-
-birdsArray.forEach(bird => {
-    const item = document.createElement("div");
-    item.classList.add("sidebar_item");
-    item.textContent = bird.name;
-
-    sidebar.appendChild(item);
+    birdCard.append(img,title,btn);
+    birdsContainer.appendChild(birdCard)
 })
 
-// let birds = [cassowary,Kookaburra,YellowTailedBlackCockatoo];
+    //birds detail pop up //
 
+    const birdsDetail = document.querySelector("#birdsDetail")
 
+    const detailImage = document.querySelector("#detailImage")
 
-// // read more
+    const backBtn = document.querySelector("#backBtn")
+   
 
-// let detailList = document.querySelector(".detail__list");
-// let detailImage = document.querySelector("img");
+function openDetail(bird) {
+    detailImage.src = bird.image
+    birdsDetail.style.display = "block"
+}
 
-
-// let gridSection = document.querySelector("#birdsContainer");
-// let detailDescription = document.querySelector("#birdsDetail")
-
-// birdsDetail.style.display = "none";
-
-
-// detailList.textContent = cassowary.detail();
-// detailImage.src = cassowary.image;
-// detailImage.alt = cassowary.name;
-
-// let readMoreBtn = document.querySelector(".bird__card .btns")
-
-// readMoreBtn.addEventListener("click", function () {
-//     birdsDetail.style.display ="none";
-//     birdsDetail.style.display ="block"
-// });

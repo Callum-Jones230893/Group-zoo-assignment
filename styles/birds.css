@@ -148,3 +148,12 @@ main {
   object-fit : cover;
   display:block;
 }
+
+.birds__detail {
+  display:none;
+  position:fixed;
+  background-color: var(--background-tertiary);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
