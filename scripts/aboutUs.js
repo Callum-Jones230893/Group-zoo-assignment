@@ -62,5 +62,21 @@ const listTeamMates = (active = defaultMessage) => {
   });
 }
 
+const hamburger = document.querySelector('.hamburger_menu')
+
+const sidebarActivate = () => {
+  let nav = document.querySelector('.navigation')
+  nav.style.animation = ("moveBack .7s forwards")
+  hamburger.addEventListener('click', sidebarDeactivate, { once: true })
+}
+
+const sidebarDeactivate = () => {
+  let nav = document.querySelector('.navigation')
+  nav.style.animation = ("moveOver .7s forwards")
+  hamburger.addEventListener('click', sidebarActivate, { once: true })
+}
+
+hamburger.addEventListener('click', sidebarActivate, { once: true })
+
 //initializes the default message//
 appendMember(defaultMessage)
