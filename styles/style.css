@@ -145,6 +145,7 @@ main {
   border-radius: 20px;
 }
 
+.animal_group,
 .sidebar_item {
   margin: 0;
   padding: 9px 5px;
@@ -169,6 +170,7 @@ main {
   font-size: 1.3rem;
   text-align: left;
   cursor: pointer;
+  transition: all .4s;
 }
 
 .animal_img {
