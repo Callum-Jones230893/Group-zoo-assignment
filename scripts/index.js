@@ -8,7 +8,7 @@ let menuLabels = [
 
 menuLabels.forEach(({group: groupName, text}) => {
   let animalGroup = document.createElement("div");
-  animalGroup.classList.add("group_item",groupName)
+  animalGroup.classList.add("sidebar_item",groupName)
   animalGroup.groupName = groupName;
   animalGroup.textContent = text;
   SIDEBAR.appendChild(animalGroup);
@@ -63,7 +63,7 @@ zooArray.forEach(animal => {
   let groupDiv = document.querySelector(`.${animal.group}`);
   if (groupDiv) {
     let animalGroup = document.createElement("div");
-    animalGroup.classList.add("sidebar_item", animal.name.replace(/\s+/g, "-")); // regex to replace white space
+    animalGroup.classList.add("animal_item", animal.name.replace(/\s+/g, "-")); // regex to replace white space
     animalGroup.textContent = animal.name;
     groupDiv.appendChild(animalGroup);
   }
@@ -73,13 +73,13 @@ let welcome = document.querySelector(".welcome_container");
 let originalContent = welcome.innerHTML;
 let selectedAnimal = "";
 
-let maxLength = description => description.slice(0,200) + (description.length > 200 ? "..." : "");
+const maxLength = description => description.slice(0,200) + (description.length > 200 ? "..." : "");
 
 zooArray.forEach(animal => {
 let selectedDiv = document.querySelector(`.${animal.name.replace(/\s+/g, "-")}`);
 
   selectedDiv.addEventListener("click", () => {
-    document.querySelectorAll(".sidebar_item").forEach(item => {
+    document.querySelectorAll(".animal_item").forEach(item => {
       item.classList.remove("active_item");
     });
     if (selectedAnimal === animal.name) {
@@ -93,7 +93,7 @@ let selectedDiv = document.querySelector(`.${animal.name.replace(/\s+/g, "-")}`)
         <p class="intro_text"> Diet: ${animal.food}</p>
         <p class="intro_text">${maxLength(animal.description)}</p>
         <a class="page_link" href="./${animal.group.toLowerCase()}s.html"> See all ${animal.group}s</a>
-        <img src="${animal.image}">`;
+        <img class="animal_img" src="${animal.image}">`;
       selectedAnimal = animal.name;
     }
   });

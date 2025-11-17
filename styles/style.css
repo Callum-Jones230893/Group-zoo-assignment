@@ -116,7 +116,7 @@ main {
   flex-direction: column;
 }
 
-.welcome_container img {
+.animal_img {
   width: 500px;
   height: 500px;
   object-fit: contain;
