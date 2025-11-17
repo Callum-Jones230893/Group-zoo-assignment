@@ -132,7 +132,8 @@ main {
 .grid__container{
   flex:1;
   display:grid;
-  grid-template-columns: repeat(3,minmax(200px,1fr));
+  grid-template-columns: repeat(3,minmax(50px,1fr));
+  grid-template-rows: max-content;
   gap:1rem;
 }
 
@@ -152,29 +153,26 @@ main {
 .birds__popup {
   background-color: var(--background-tertiary);
   width:min(800px, 90vw);
-  max-height:80vh;
+  /* max-height:80vh; */
 
   display:none;
   flex-direction: column;
   justify-content:center;
-  gap:1rem;
+  padding:20px;
+  overflow: auto; 
 
   position:fixed;
-  inset:20%;
+  inset:8%;
   border-radius: 12px;
   
   align-items:center;
   text-align: center;
-  
-  
 }
 
 
 .birds__popup img {
   max-width:300px;
-  width:100%;
   height:auto;
-  display:block;
   border-radius:8px;
 
   width:100%;
