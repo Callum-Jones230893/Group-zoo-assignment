@@ -73,11 +73,11 @@ const sidebarActivate = () => {
 
 const sidebarDeactivate = () => {
   let nav = document.querySelector('.navigation')
-  nav.className = 'navigation nav_move_back'
+  nav.className = 'navigation nav_hide'
   hamburger.addEventListener('click', sidebarActivate, { once: true })
 }
 
-
+///Checks whether to show or hide the sidebar based on width///
 const checkWindowSize = () => {
   if (windowSize < 900) {
     sidebarDeactivate()
@@ -92,7 +92,6 @@ const checkWindowSize = () => {
 
 hamburger.addEventListener('click', sidebarDeactivate, { once: true })
 
-//initializes the default message//
-
+//initializes the default message, and the sidebar position//
 checkWindowSize()
 appendMember(defaultMessage)

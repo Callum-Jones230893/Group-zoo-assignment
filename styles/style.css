@@ -274,7 +274,7 @@ main {
     animation: moveOver .4s forwards cubic-bezier(0.5, 1, 0.4, 1.2);
   }
 
-  .nav_move_back {
+  .nav_hide {
     animation: moveBack .3s forwards;
   }
 
@@ -319,10 +319,10 @@ main {
     color: var(--background-secondary);
   }
 
-  .sidebar_item, 
-  .animal_item {
+  .sidebar_item,
+  .animal_group {
     padding: 1rem .6rem;
-    font-size: clamp(1.1rem,4.4vw, 1.7rem);
+    font-size: clamp(1.1rem, 4.3vw, 1.6rem);
     height: 100%;
     width: clamp(9rem, 12vw, 20rem);
     border-radius: 8px;
@@ -334,6 +334,22 @@ main {
     background-color: var(--background-secondary);
     color: var(--color-primary);
     transform: none;
+  }
+
+  .animal_item {
+    font-size: 0;
+    padding: 0;
+  }
+
+  .animal_group:hover .animal_item {
+    display: block;
+    font-size: clamp(.9rem, 3.8vw, 1.3rem);
+    padding: 5px 3px;
+    opacity: 1;
+  }
+
+  .welcome_container {
+    padding: 0 2rem;
   }
   
 }

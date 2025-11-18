@@ -100,20 +100,35 @@ zooArray.forEach(animal => {
 });
 
 const hamburger = document.querySelector('.hamburger_menu')
+const windowSize = window.innerWidth
 
 const sidebarActivate = () => {
   let nav = document.querySelector('.navigation')
-  nav.style.animation = ("moveBack .7s forwards")
+  nav.className = 'navigation nav_move'
   hamburger.addEventListener('click', sidebarDeactivate, { once: true })
 }
 
 const sidebarDeactivate = () => {
   let nav = document.querySelector('.navigation')
-  nav.style.animation = ("moveOver .7s forwards")
+  nav.className = 'navigation nav_hide'
   hamburger.addEventListener('click', sidebarActivate, { once: true })
 }
 
-hamburger.addEventListener('click', sidebarActivate, { once: true })
+///Checks whether to show or hide the sidebar based on width///
+const checkWindowSize = () => {
+  if (windowSize < 900) {
+    sidebarDeactivate()
+    window.addEventListener('resize', checkWindowSize, { once: true })
+    console.log('removing sidebar')
+  } else {
+    sidebarActivate()
+    window.addEventListener('resize', checkWindowSize, { once: true })
+    console.log('adding sidebar')
+  }
+}
 
-//initializes the default message//
+hamburger.addEventListener('click', sidebarDeactivate, { once: true })
+
+//initializes the default message, and the sidebar position//
+checkWindowSize()
 appendMember(defaultMessage)
