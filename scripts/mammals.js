@@ -16,16 +16,32 @@ let quokka = new Mammals ("Quokka", "10 years", "mammals", "Plant eaters, they m
 let mammalArray = [echidna, tasmanianDevil, quokka]
 
 let sideMammals = document.querySelector(".sidebar")
+let orginalMammal = sideMammals.innerHTML
+let mammal = ""
 
-mammalArray.forEach (animal =>  {
-   let mammalsGroup = document.createElement("div")
-    mammalsGroup.className = "sidebar_item"
-    mammalsGroup.textContent = animal.name
-    sideMammals.appendChild(mammalsGroup)
-})
+const textLength = description => description.slice (0,200) + (description.length > 200 ? "..." : "")
 
-sideMammals.addEventListener("click", () => {
-    document.querySelectorAll(".sidebar_item").forEach(animals => {
-        animals.classList.remove("active_item");
+mammalArray.forEach(animal => {
+    let mammalsGroup = document.createElement("div");
+    mammalsGroup.classList.add("sidebar_item");
+    mammalsGroup.textContent = animal.name;
+    sideMammals.appendChild(mammalsGroup);
+
+    // Click event inside loop
+    mammalsGroup.addEventListener("click", () => {
+        document.querySelectorAll(".sidebar_item").forEach(el => {
+            el.classList.remove("active_item");
+        });
+        mammalsGroup.classList.add("active_item");
+        document.querySelector(".content").innerHTML = `
+            <h1>${animal.name}</h1>
+            <p class="container_text more">Lifespan: ${animal.lifespan}</p>
+            <p class="container_text less">Group: ${animal.group}</p>
+            <p class="container_text less">Food: ${animal.food}</p>
+            <p class="container_text less">Description: ${textLength(animal.description)}</p>
+            <p class="container_text more">Description: ${animal.description}</p>
+            <p class="container_text more">Length: ${animal.length}</p>
+            <p class="container_text more">Weight: ${animal.weight}</p>
+            <p class="container_text more">Found: ${animal.found}</p>`;
     });
 });
