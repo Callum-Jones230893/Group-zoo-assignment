@@ -1,7 +1,6 @@
 const sidebar = document.querySelector(".sidebar");
 const content = document.querySelector(".content_container");
-const originalContent = content.innerHTML; 
-
+const innerHTML = content.innerHTML; 
 
 
 function Birds(name, lifespan, group, food, length,  weight, found, image,description) {
@@ -29,7 +28,7 @@ let birdsArray = [
 
     new Birds(
       "Yellow Tailed Cockatoo", "41 years", "Bird", "Fruit, seeds and other plant material", "65cm", "900 grams", "SE Australia", "./images/birds/yellow-tailed-black-cockatoo.jpg",
-    "It’s not hard to imagine that cassowaries are descended from dinosaur ancestors. The largest cassowaries can stand as high as six feet and weigh up to 160 pounds.   These large birds cannot fly, but their extremely powerful legs propel them at great speeds. They are strong swimmers and can move quickly on both land and water. Cassowaries are shy and they are usually hard to spot, at least in their natural rain forest habitats. They are not overly aggressive, and attacks are rare. But they can do a lot of damage if they are provoked or angered. Cassowary attacks have occasionally been deadly, including a recent one which occurred in 2019, at a private collection of caged birds in Florida")
+    "It has a short crest on the top of its head. Its plumage is mostly brownish black and it has prominent yellow cheek patches and a yellow tail band. The body feathers are edged with yellow giving a scalloped appearance. The adult male has a black beak and pinkish-red eye-rings, and the female has a bone-coloured beak and grey eye-rings. In flight, yellow-tailed black cockatoos flap deeply and slowly, with a peculiar heavy fluid motion. Their loud, wailing calls carry for long distances. The whiteae is found south of Victoria to the East of South Australia and is smaller in size. The yellow-tailed black cockatoo is found in temperate forests and forested areas across south and central eastern Queensland to southeastern South Australia, including a very small population persisting in the Eyre Peninsula.[4] Two subspecies are recognised, although Tasmanian and southern mainland populations of the southern subspecies xanthanotus may be distinct enough from each other to bring the total to three. Birds of subspecies funereus (Queensland to eastern Victoria) have longer wings and tails and darker plumage overall, while those of xanthanotus (western Victoria, South Australia and Tasmania) have more prominent scalloping.")
 ];
 
 const maxLength = desc => desc.slice(0, 200) + (desc.length > 200 ? "..." : "");
@@ -43,7 +42,7 @@ let birdGroup = document.createElement("birdGroup");
     sidebar.appendChild(birdGroup)
 
     birdGroup.addEventListener("click",() =>{
-      content.innerHTML = originalContent;
+      content.innerHTML = innerHTML;
     })
 
 birdsArray.forEach(birds => {
@@ -70,7 +69,7 @@ function showShortSummary(birds) {
     <p class="container_text"><strong>Lifespan:</strong> ${birds.lifespan}</p>
     <p class="container_text"><strong>group:</strong> ${birds.group}</p>
     <img class="animal_img" src="${birds.image}">
-    <button id="readMoreBtn" class="page_link">Read More</button>
+    <button class="read_more" id="readMoreBtn" >Read More</button>
     `;
 
     document.querySelector("#readMoreBtn").onclick = () => showFullSummary(birds);
@@ -89,8 +88,9 @@ function showFullSummary(birds) {
         <img class="animal_img" src="${birds.image}">
         <p class="container_text"><strong>Description:</strong> ${birds.description}</p>
         
-        <button id="backBtn" class="page_link">back for summary</button>
+        <button class="read_more" id="backBtn" >back for summary</button>
     `;
 
     document.querySelector("#backBtn").onclick = () => showShortSummary(birds);
 }
+

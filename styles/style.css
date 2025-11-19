@@ -225,25 +225,17 @@ main {
   text-align: center;
 }
 
-.container_text{
-  margin:0;
-  
-}
-
-.page_link{
+.read_more{
   background-color: var(--background-primary);
   color:var(--color-primary);
   display:block;
   margin-top:3%;
   margin-right:auto;
   margin-left:auto;
-
   padding:15px 42px;
   border-radius: 12px;
-
   text-decoration: none;
   border:none;
-
   text-align:center;
   cursor:pointer;
 }
