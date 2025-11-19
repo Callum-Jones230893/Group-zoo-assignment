@@ -1,5 +1,7 @@
 const sidebar = document.querySelector(".sidebar");
-const content = document.querySelector(".content_container");
+const content = document.querySelector(".welcome_container ");
+
+const originalContent = content.innerHTML;
 
 
 function Birds(name, lifespan, group, food, length,  weight, found, image,description) {
@@ -34,16 +36,6 @@ let birdsArray = [
 const maxLength = desc => desc.slice(0, 200) + (desc.length > 200 ? "..." : "");
 
 
-sidebar
-let birdGroup = document.createElement("birdGroup");
-    birdGroup.classList.add("animal_group")
-
-    sidebar.appendChild(birdGroup)
-
-    birdGroup.addEventListener("click",() =>{
-      content.innerHTML = innerHTML;
-    })
-
 birdsArray.forEach(birds => {
     let item = document.createElement("div");
         item.classList.add("sidebar_item");
@@ -58,8 +50,15 @@ birdsArray.forEach(birds => {
         showShortSummary(birds);
     });
 
-        birdGroup.appendChild(item);
+    //雙基
+    item.addEventListener('dblclick', function(e){
+        e.stopPropagation();
+        content.innerHTML = originalContent;
+        document.querySelectorAll("sidebar_item").forEach(i => i.classList.remove("active_item"));});
+      
+        sidebar.appendChild(item);
 });
+
 
 // short summary
 function showShortSummary(birds) {
