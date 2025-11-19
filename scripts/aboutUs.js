@@ -62,5 +62,46 @@ const listTeamMates = (active = defaultMessage) => {
   });
 }
 
+///Logic for the searchbar///
+const searchButton = document.querySelector('.search')
+const searchBox = document.querySelector('.search_box')
+
+const search = () => {
+  let searchContent = searchBox.value
+  let mainContent = document.querySelector('.welcome_container')
+  let pageContent = mainContent.textContent
+  let matchedWord
+  let position
+  if (searchContent === '') return
+  for (let i = 0; i < pageContent.length; i++) {
+    matchedWord = ''
+    let broken = false
+    for (let j = 0, k = i; j < searchContent.length; j++, k++) {
+      if (searchContent.charAt(j) === pageContent.charAt(k)) {
+        matchedWord += pageContent.charAt(k)
+      } else {
+        broken = true
+        break
+      }
+    }
+    if (!broken && matchedWord === searchContent) {
+      highlighter(mainContent, i, searchContent.length)
+    }
+  }
+}
+
+const highlighter = (content, index, wordLength) => {
+  let firstIndex = index
+  let lastIndex = index + wordLength
+  content.splice
+}
+
+searchBox.addEventListener('focus', () => {
+  searchBox.addEventListener('keydown', (e) => {
+    e.key === 'Enter' && search()
+  })
+  searchButton.addEventListener('click', search)
+})
+
 //initializes the default message//
 appendMember(defaultMessage)
