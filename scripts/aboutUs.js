@@ -62,11 +62,31 @@ const listTeamMates = (active = defaultMessage) => {
   });
 }
 
+///Logic for the searchbar///
+const searchButton = document.querySelector('.search')
+const searchBox = document.querySelector('.search_box')
+
+const search = () => {
+  console.log('search activated')
+  let searchContent = searchBox.value
+  let mainContent = document.querySelector('.main_content')
+  let pageContent = mainContent.textContent
+}
+
+searchBox.addEventListener('focus', () => {
+  searchBox.addEventListener('keydown', (e) => {
+    e.key === 'Enter' && search()
+  })
+  searchButton.addEventListener('click', search)
+})
+
+///Logic for the media query menu///
 const hamburger = document.querySelector('.hamburger_menu')
-const body = document.querySelector('.main_content')
+const body = document.querySelector('.main_content')  
 const backgroundPicture = document.querySelector('.background_image')
 
 let sidebarOn = false
+let userSidebarInput = false
 
 const toggleSidebar = () => {
   let nav = document.querySelector('.navigation')
@@ -95,10 +115,10 @@ window.addEventListener('resize', checkWindowSize)
 hamburger.addEventListener('click', toggleSidebar)
 body.addEventListener('click', () => {
   if (sidebarOn && window.innerWidth < 900) toggleSidebar()
-  })
+})
 backgroundPicture.addEventListener('click', () => {
   if (sidebarOn && window.innerWidth < 900) toggleSidebar()
-  })
+})
 
 //initializes the default message, and the sidebar position//
 checkWindowSize()

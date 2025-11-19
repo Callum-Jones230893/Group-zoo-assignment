@@ -78,7 +78,7 @@ body {
   display: none;
   fill: var(--background-secondary);
   position: fixed;
-  right: 38px;
+  right: 30px;
   padding: 6px;
   cursor: pointer;
   transition: all 0.25s;
