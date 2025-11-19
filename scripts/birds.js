@@ -67,7 +67,7 @@ function showShortSummary(birds) {
     <p class="container_text">Lifespan: ${birds.lifespan}</p>
     <p class="container_text">Group: ${birds.group}</p>
     <img class="animal_img" src="${birds.image}">
-    <button class="read_more" id="readMoreBtn" >Read More</button>
+    <button class="Btn" id="readMoreBtn">Read More</button>
     `;
 
     document.querySelector("#readMoreBtn").onclick = () => showFullSummary(birds);
@@ -84,9 +84,9 @@ function showFullSummary(birds) {
         <p class="container_text">Weight: ${birds.weight}</p>
         <p class="container_text">Found: ${birds.found}</p>
         <img class="animal_img" src="${birds.image}">
-        <p class="container_text">Description:> ${birds.description}</p>
+        <p class="container_text">Description:${birds.description}</p>
         
-        <button class="read_more" id="backBtn" >back for summary</button>
+        <button class="Btn" id="backBtn">Back for summary</button>
     `;
 
     document.querySelector("#backBtn").onclick = () => showShortSummary(birds);

@@ -169,13 +169,20 @@ main {
 
   background-color: var(--background-secondary);
   background-size: cover;
-  padding:20px;
-  width:100%;
-  inset: 8%;
-
-  border-radius: 16px;
   align-items:center;
   text-align: center;
+  padding:20px;
+  width:80%;
+  inset: 8%;
+  border-radius: 16px;
+}
+
+.intro_text{
+  text-align: center;
+  font-size: 1.5rem;
+  width:90%;
+  margin:0 auto;
+
 }
 
 .animal_item {
@@ -207,6 +214,8 @@ main {
   text-decoration: underline;
 }
 
+
+
 .container_text {
   font-size: 1.5rem;
   padding: 8px;
@@ -214,8 +223,8 @@ main {
 }
 
 
-.read_more{
-  background-color: var(--background-primary);
+.Btn {
+  background-color:var(--background-tertiary);
   color:var(--color-primary);
   display:block;
   margin-top:3%;
