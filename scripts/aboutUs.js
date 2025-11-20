@@ -64,3 +64,6 @@ const listTeamMates = (active = defaultMessage) => {
 
 //initializes the default message//
 appendMember(defaultMessage)
+
+document.querySelector(".background_image").style.backgroundImage =
+    "url('../images/background_image.avif')";

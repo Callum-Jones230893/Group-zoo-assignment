@@ -1,5 +1,8 @@
 const SIDEBAR = document.querySelector(".sidebar")
 
+document.querySelector(".background_image").style.backgroundImage =
+    "url('../images/background_image.avif')";
+
 let menuLabels = [
   { group: "Bird", text: "Birds:" },
   { group: "Mammal", text: "Mammals:" },
@@ -9,21 +12,20 @@ let menuLabels = [
 menuLabels.forEach(({ group: groupName, text }) => {
   let animalGroup = document.createElement("div");
   animalGroup.classList.add("animal_group", groupName)
-  animalGroup.groupName = groupName;
   animalGroup.textContent = text;
   SIDEBAR.appendChild(animalGroup);
 })
 
 function ZooAnimals(name, lifespan, group, food, description, length, weight, location, image) {
   this.name = name,
-    this.lifespan = lifespan,
-    this.group = group,
-    this.food = food,
-    this.description = description,
-    this.weight = weight,
-    this.location = location,
-    this.length = length,
-    this.image = image
+  this.lifespan = lifespan,
+  this.group = group,
+  this.food = food,
+  this.description = description,
+  this.weight = weight,
+  this.location = location,
+  this.length = length,
+  this.image = image
 }
 
 let echidna = new ZooAnimals("Echidna", "50 years", "Mammal", "Insects such as ants and termites, beetles, larvae and worms", "Echidnas, also called spiny anteaters, are walking contradictions. They are mammals, but they lay eggs. They are often classified as long- or sort-beaked, but don't have beaks at all, in the traditional sense; they have fleshy noses that can be either on the long side or rather short. They don't really look like true anteaters (Myrmecophaga tridactyla), either, and they are not closely related to them. They are spiny, though; their bodies are covered with hollow, barbless quills. Echidnas are monotremes, egg-laying mammals. The only other living monotreme is the platypus.",

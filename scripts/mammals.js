@@ -1,3 +1,8 @@
+
+document.querySelector(".background_image").style.backgroundImage =
+    "url('../images/mammal_background.jpg')";
+document.querySelector(".background_image").style.backgroundPosition = "50% 20%"
+
 function Mammals(name, lifespan, group, food, description, length, weight, found) { 
     this.name = name,
     this.lifespan = lifespan,

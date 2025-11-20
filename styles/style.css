@@ -108,7 +108,6 @@ body {
 }
 
 .background_image {
-  background-image: url(../images/background_image.avif);
   background-color: var(--background-secondary);
   background-size: cover;
   height: 40vh;
