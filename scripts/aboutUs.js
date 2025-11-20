@@ -14,11 +14,11 @@ function teamMate(first, last, country, description, pet) {
 }
 
 ////Creating each member////
-let callum = new teamMate('Callum', 'Jones', 'Callum is from Australia', 'Callum has been fascinated by animals all his life. Having been raised by kangaroos, he knows what it is like to truly be part of mother nature. Callum was originally featured in an exhibit, but after several court cases we included him on our staff. You will find him hopping between exhibits.', 'Callum has a pet crocodile whom he named "Rob" - after his favorite teacher.')
-let seth = new teamMate('Seth', 'Armistead', 'Seth is from USA', 'Seth has worked for Quokka zoo for three years. Since then, he has "become one" with the tasmanian devils. Being one of our primary tour guides here at the zoo, Seth introduces visitors to the idea of "true environmentalism", and what it means to get in the mind of some of our most interesting species.', "Seth doesn't have any pets.")
-let clara = new teamMate('Clara', 'Swann', 'Clara is from Sweden.', 'Clara is a volunteer here at Quokka zoo. After repeatedly climbing over fences late at night to visit the quokka exhibit, the personell decided to allow Clara access. She is almost always inside the quokka exhibit, obsessing over their cuteness.', 'Clara has two pet guinea pigs.')
 let brianna = new teamMate('Brianna', 'Fraser', 'Brianna is from China', 'Brianna is our zoos bird enthusiast. She can make over 300 bird sounds, and some people even think she can communicate with the birds at the zoo. Brianna spends most of her time scrambling up trees in pursuit of kookaburras, who generally avoid her. ', 'Brianna has a cat.')
-let nathalie = new teamMate('Nathalie', 'Buss', 'Nathalie is from Sweden', 'Nathalie became a part of Quokka zoo after falling into the Perentie exhibit and being too afraid to climb out. You will find her desperately avoiding the Perentie, who have become indifferent to her presence. Since she has been here for so long, we decided to make her part of the team.', 'Nathalie has a cat.')
+let callum = new teamMate('Callum', 'Jones', 'Callum is from Australia', 'Callum has been fascinated by animals all his life. Having been raised by kangaroos, he knows what it is like to truly be part of mother nature. Callum was originally featured in an exhibit, but after several court cases we included him on our staff. You will find him hopping between exhibits.', 'Callum has a pet crocodile whom he named "Rob" - after his favorite teacher.')
+let clara = new teamMate('Clara', 'Swann', 'Clara is from Sweden.', 'Clara is a volunteer here at Hawksbill zoo. After repeatedly climbing over fences late at night to visit the quokka exhibit, the personell decided to allow Clara access. She is almost always inside the quokka exhibit, obsessing over their cuteness.', 'Clara has two pet guinea pigs.')
+let nathalie = new teamMate('Nathalie', 'Buss', 'Nathalie is from Sweden', 'Nathalie became a part of Hawksbill zoo after falling into the Perentie exhibit and being too afraid to climb out. You will find her desperately avoiding the Perentie, who have become indifferent to her presence. Since she has been here for so long, we decided to make her part of the team.', 'Nathalie has a cat.')
+let seth = new teamMate('Seth', 'Armistead', 'Seth is from USA', 'Seth has worked for Hawksbill zoo for three years. Since then, he has "become one" with the tasmanian devils. Being one of our primary tour guides here at the zoo, Seth introduces visitors to the idea of "true environmentalism", and what it means to get in the mind of some of our most interesting species.', "Seth doesn't have any pets.")
 let defaultMessage = new teamMate('Team', 'Members', '', 'Our team has members from all over the world! We work together to maintain a healthy and safe environment for all of the animals that we are responsible for. Our goal is to present the most interesting species in Australia in an engaging and authentic way to everyone who steps through our gate.', '')
 
 teamMates.pop(teamMates.findLast)
@@ -40,7 +40,7 @@ const appendMember = (member) => {
     let memberData = document.createElement('div')
     memberData.textContent = memberPairs[i][1]
     memberData.className = (memberPairs[i][0] + ' container_text') //We might end up changing this class name//
-    memberArea.appendChild(memberData)
+    memberData.textContent !== '' && memberArea.appendChild(memberData)
   }
   listTeamMates(member)
 }
@@ -64,6 +64,46 @@ const listTeamMates = (active = defaultMessage) => {
     sidebar.appendChild(teamMate)
   });
 }
+
+///Logic for the media query menu///
+const hamburger = document.querySelector('.hamburger_menu')
+const body = document.querySelector('.main_content')
+const backgroundPicture = document.querySelector('.background_image')
+
+let sidebarOn = false
+let userSidebarInput = false
+
+const toggleSidebar = () => {
+  let nav = document.querySelector('.navigation')
+  if (!sidebarOn) {
+    nav.className = 'navigation nav_move'
+    sidebarOn = true
+  } else {
+    nav.className = 'navigation nav_hide'
+    sidebarOn = false
+  }
+}
+
+///Checks whether to show or hide the sidebar based on width///
+const checkWindowSize = () => {
+  const windowSize = window.innerWidth
+  if (windowSize < 900) {
+    sidebarOn = true
+    toggleSidebar()
+  } else {
+    sidebarOn = false
+    toggleSidebar()
+  }
+}
+
+window.addEventListener('resize', checkWindowSize)
+hamburger.addEventListener('click', toggleSidebar)
+body.addEventListener('click', () => {
+  if (sidebarOn && window.innerWidth < 900) toggleSidebar()
+})
+backgroundPicture.addEventListener('click', () => {
+  if (sidebarOn && window.innerWidth < 900) toggleSidebar()
+})
 
 ///Logic for the searchbar///
 const searchButton = document.querySelector('.search')
@@ -123,5 +163,6 @@ searchButton.addEventListener('click', ()=> search(false))
 searchBox.addEventListener('blur', ()=> search(true))
 
 
-//initializes the default message//
+//initializes the default message, and sets window size//
 appendMember(defaultMessage)
+checkWindowSize()

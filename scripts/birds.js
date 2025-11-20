@@ -99,6 +99,46 @@ function showFullSummary(birds) {
     document.querySelector("#backBtn").onclick = () => showShortSummary(birds);
 }
 
+///Logic for the media query menu///
+const hamburger = document.querySelector('.hamburger_menu')
+const body = document.querySelector('.main_content')
+const backgroundPicture = document.querySelector('.background_image')
+
+let sidebarOn = false
+let userSidebarInput = false
+
+const toggleSidebar = () => {
+  let nav = document.querySelector('.navigation')
+  if (!sidebarOn) {
+    nav.className = 'navigation nav_move'
+    sidebarOn = true
+  } else {
+    nav.className = 'navigation nav_hide'
+    sidebarOn = false
+  }
+}
+
+///Checks whether to show or hide the sidebar based on width///
+const checkWindowSize = () => {
+  const windowSize = window.innerWidth
+  if (windowSize < 900) {
+    sidebarOn = true
+    toggleSidebar()
+  } else {
+    sidebarOn = false
+    toggleSidebar()
+  }
+}
+
+window.addEventListener('resize', checkWindowSize)
+hamburger.addEventListener('click', toggleSidebar)
+body.addEventListener('click', () => {
+  if (sidebarOn && window.innerWidth < 900) toggleSidebar()
+})
+backgroundPicture.addEventListener('click', () => {
+  if (sidebarOn && window.innerWidth < 900) toggleSidebar()
+})
+
 ///Logic for the searchbar///
 const searchButton = document.querySelector('.search')
 const searchBox = document.querySelector('.search_box')
@@ -154,3 +194,5 @@ searchBox.addEventListener('keydown', (e) => {
 })
 searchButton.addEventListener('click', ()=> search(false))
 searchBox.addEventListener('blur', ()=> search(true))
+
+checkWindowSize()
