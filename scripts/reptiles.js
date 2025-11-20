@@ -85,9 +85,9 @@ function showShortSummary(reptile) {
   defaultMessage.innerHTML = `
         <h1>${reptile.name}</h1>
         <img class="animal_img" src="${reptile.image}">
-        <a class="page_link" href="./reptiles.html"> Group: ${reptile.group}</a>
-        <p class="intro_text"> Food: ${reptile.food}</p>
-        <p class="intro_text">${maxLength(reptile.description)}</p>
+        <a class="page_link container_text" href="./reptiles.html"> Group: ${reptile.group}</a>
+        <p class="container_text"> Food: ${reptile.food}</p>
+        <p class="container_text">${maxLength(reptile.description)}</p>
         <button class="Btn" id="readMoreBtn">Read more</button>`;
 
   document.querySelector("#readMoreBtn").onclick = () => showFullSummary(reptile);
