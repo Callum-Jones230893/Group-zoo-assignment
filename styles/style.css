@@ -140,7 +140,6 @@ main {
   background-color: white;
   border: var(--background-tertiary);
   border-style: solid;
-  margin: 16px;
   border-radius: 20px;
   width: 300px;
 }
@@ -167,12 +166,10 @@ main {
   height: fit-content;
   justify-content: center;
   background-color: var(--background-secondary);
-  background-size: cover;
   align-items: center;
   text-align: center;
   padding: 20px;
   width: 80%;
-  inset: 8%;
   border-radius: 16px;
 }
 
@@ -199,7 +196,6 @@ h1 {
   object-fit: contain;
   object-position: center;
   max-width: 300px;
-  width: 100%;
   height: auto;
   border-radius: 8px;
   aspect-ratio: 1 / 1;
