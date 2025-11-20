@@ -1,5 +1,8 @@
 const SIDEBAR = document.querySelector(".sidebar")
 
+document.querySelector(".background_image").style.backgroundImage =
+    "url('./images/background_image.avif')";
+
 let menuLabels = [
   { group: "Bird", text: "Birds:" },
   { group: "Mammal", text: "Mammals:" },
@@ -9,21 +12,20 @@ let menuLabels = [
 menuLabels.forEach(({ group: groupName, text }) => {
   let animalGroup = document.createElement("div");
   animalGroup.classList.add("animal_group", groupName)
-  animalGroup.groupName = groupName;
   animalGroup.textContent = text;
   SIDEBAR.appendChild(animalGroup);
 })
 
 function ZooAnimals(name, lifespan, group, food, description, length, weight, location, image) {
   this.name = name,
-    this.lifespan = lifespan,
-    this.group = group,
-    this.food = food,
-    this.description = description,
-    this.weight = weight,
-    this.location = location,
-    this.length = length,
-    this.image = image
+  this.lifespan = lifespan,
+  this.group = group,
+  this.food = food,
+  this.description = description,
+  this.weight = weight,
+  this.location = location,
+  this.length = length,
+  this.image = image
 }
 
 let echidna = new ZooAnimals("Echidna", "50 years", "Mammal", "Insects such as ants and termites, beetles, larvae and worms", "Echidnas, also called spiny anteaters, are walking contradictions. They are mammals, but they lay eggs. They are often classified as long- or sort-beaked, but don't have beaks at all, in the traditional sense; they have fleshy noses that can be either on the long side or rather short. They don't really look like true anteaters (Myrmecophaga tridactyla), either, and they are not closely related to them. They are spiny, though; their bodies are covered with hollow, barbless quills. Echidnas are monotremes, egg-laying mammals. The only other living monotreme is the platypus.",
@@ -89,48 +91,112 @@ zooArray.forEach(animal => {
       selectedDiv.classList.add("active_item");
       welcome.innerHTML = `
         <h1>${animal.name}</h1>
+        <img class="animal_img" src="${animal.image}">        
         <p class="container_text"> Group: ${animal.group}</p>
         <p class="container_text"> Diet: ${animal.food}</p>
         <p class="container_text">${maxLength(animal.description)}</p>
-        <a class="page_link" href="./${animal.group.toLowerCase()}s.html"> See all ${animal.group}s</a>
-        <img class="animal_img" src="${animal.image}">`;
+        <a class="page_link container_text" href="./${animal.group.toLowerCase()}s.html"> See all ${animal.group}s</a>
+`;
       selectedAnimal = animal.name;
     }
   });
 });
 
+///Logic for the media query menu///
 const hamburger = document.querySelector('.hamburger_menu')
-const windowSize = window.innerWidth
 const body = document.querySelector('.main_content')
 const backgroundPicture = document.querySelector('.background_image')
 
-const sidebarActivate = () => {
-  let nav = document.querySelector('.navigation')
-  nav.className = 'navigation nav_move'
-  hamburger.addEventListener('click', sidebarDeactivate, { once: true })
-}
+let sidebarOn = false
+let userSidebarInput = false
 
-const sidebarDeactivate = () => {
+const toggleSidebar = () => {
   let nav = document.querySelector('.navigation')
-  nav.className = 'navigation nav_hide'
-  hamburger.addEventListener('click', sidebarActivate, { once: true })
+  if (!sidebarOn) {
+    nav.className = 'navigation nav_move'
+    sidebarOn = true
+  } else {
+    nav.className = 'navigation nav_hide'
+    sidebarOn = false
+  }
 }
 
 ///Checks whether to show or hide the sidebar based on width///
 const checkWindowSize = () => {
+  const windowSize = window.innerWidth
   if (windowSize < 900) {
-    sidebarDeactivate()
-    window.addEventListener('resize', checkWindowSize, { once: true })
+    sidebarOn = true
+    toggleSidebar()
   } else {
-    sidebarActivate()
-    window.addEventListener('resize', checkWindowSize, { once: true })
+    sidebarOn = false
+    toggleSidebar()
   }
 }
 
-///If you click anywhere outside the sidebar when its shown, it will hide///
-hamburger.addEventListener('click', sidebarActivate, { once: true })
-body.addEventListener('click', sidebarDeactivate)
-backgroundPicture.addEventListener('click', sidebarDeactivate)
+window.addEventListener('resize', checkWindowSize)
+hamburger.addEventListener('click', toggleSidebar)
+body.addEventListener('click', () => {
+  if (sidebarOn && window.innerWidth < 900) toggleSidebar()
+})
+backgroundPicture.addEventListener('click', () => {
+  if (sidebarOn && window.innerWidth < 900) toggleSidebar()
+})
 
-//initializes the default message, and the sidebar position//
+///Logic for the searchbar///
+const searchButton = document.querySelector('.search')
+const searchBox = document.querySelector('.search_box')
+
+const search = (clear = false) => {
+  let searchContent
+  if(!clear) {
+    searchContent = searchBox.value
+  } else {
+    searchContent = ''
+  }
+  searchContent = searchContent.toLowerCase()
+  let containers = document.querySelectorAll('.container_text')
+  let containerArray = Array.from(containers)
+  containerArray.forEach(container => {
+    let matchedWord
+    let indexes = []
+    let pageContent = container.textContent.toLowerCase()
+    for (let i = 0; i < pageContent.length; i++) {
+      matchedWord = ''
+      let broken = false
+      for (let j = 0, k = i; j < searchContent.length; j++, k++) {
+        if (searchContent.charAt(j) === pageContent.charAt(k)) {
+          matchedWord += pageContent.charAt(k)
+        } else {
+          broken = true
+          break
+        }
+      } if (!broken && matchedWord === searchContent) {
+        indexes.push(i)
+      }
+    }
+    highlighter(container, indexes, searchContent.length)
+  })
+}
+
+
+const highlighter = (container, indexes, wordLength) => {
+  let text = container.textContent
+  let result = ''
+  let lastIndex = 0
+  indexes.forEach(start => { 
+    let end = start + wordLength
+    result += text.slice(lastIndex, start)
+    result += `<span class='highlight'>${text.slice(start, end)}</span>`
+    lastIndex = end
+  });
+  result += text.slice(lastIndex)
+  container.innerHTML = result
+}
+
+searchBox.addEventListener('keydown', (e) => {
+  e.key === 'Enter' && search(false)
+})
+searchButton.addEventListener('click', ()=> search(false))
+searchBox.addEventListener('blur', ()=> search(true))
+
 checkWindowSize()

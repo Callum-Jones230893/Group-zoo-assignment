@@ -1,4 +1,9 @@
-function Mammals(name, lifespan, group, food, description, length, weight, found) { 
+
+document.querySelector(".background_image").style.backgroundImage =
+    "url('./images/mammal_background.jpg')";
+
+//CONSTRUCTOR//
+function Mammals(name, lifespan, group, food, description, length, weight, found, image) { 
     this.name = name,
     this.lifespan = lifespan,
     this.group = group,
@@ -6,20 +11,177 @@ function Mammals(name, lifespan, group, food, description, length, weight, found
     this.description = description,
     this.length = length,
     this.weight = weight,
-    this.found = found
+    this.found = found,
+    this.image = image
 }
-
-let echidna = new Mammals ("Echidna", "50 years", "mammals", "insects such as ants and termites, beetle larvae and worms", "Echidnas, also called spiny anteaters, are walking contradictions. They are mammals, but they lay eggs. They are often classified as long- or sort-beaked, but don't have beaks at all, in the traditional sense; they have fleshy noses that can be either on the long side or rather short. They don't really look like true anteaters (Myrmecophaga tridactyla), either, and they are not closely related to them. They are spiny, though; their bodies are covered with hollow, barbless quills. Echidnas are monotremes, egg-laying mammals. The only other living monotreme is the platypus.", "76 cm", "10kg", "Throughout Australia.")
-let tasmanianDevil = new Mammals ("Tasmanian Devil", "5 years", "mammals", "A predator, then eat meat from other animals such as wallabies and wombats", "The Tasmanian devil (Sarcophilus harrisii) (palawa kani: purinina)[3] is a carnivorous marsupial of the family Dasyuridae. Until recently, it was only found on the island state of Tasmania, but it has been reintroduced to New South Wales in mainland Australia, with a small breeding population. The size of a small dog, the Tasmanian devil became the largest carnivorous marsupial in the world, following the extinction of the thylacine in 1936. It is related to quolls, and distantly related to the thylacine. It is characterised by its stocky and muscular build, black fur, pungent odour, extremely loud and disturbing screech, keen sense of smell, and ferocity when feeding. The Tasmanian devil's large head and neck allow it to generate among the strongest bites per unit body mass of any extant predatory land mammal. It hunts prey and scavenges on carrion.", "70 cm", "10kg", "Tasmania")
-let quokka = new Mammals ("Quokka", "10 years", "mammals", "Plant eaters, they munch on shrubs and grasses", "The Quokka, Setonix brachyurus, was described by early Dutch explorer, Willem de Vlamingh, 'as a kind of rat as big as a common cat'. His first sighting of the Quokka was on an island off the mouth of the Swan River. He named the island Rottenest ('rat nest') in honour of this sighting. The island is now known as Rottnest Island. Essentially the Quokka looks very much like other wallabies.It has short, very coarse and thick grey-brown fur over most of the body with lighter parts underneath. Its facial features consist of a naked nose on a short, broad face with rounded furry ears.The tail is relatively short and mostly devoid of hair. In contrast, the hair on the feet extends to cover its claws.", "50 cm", "3kg", "Only found on Rottnest Island and a few places on mainland Western Australia.")
+//INFORMATION ABOUT THE ANIMALS//
+let echidna = new Mammals ("Echidna", "50 years", "Mammals", "Insects such as ants and termites, beetle larvae and worms", "Echidnas, also called spiny anteaters, are walking contradictions. They are mammals, but they lay eggs. They are often classified as long- or sort-beaked, but don't have beaks at all, in the traditional sense; they have fleshy noses that can be either on the long side or rather short. They don't really look like true anteaters (Myrmecophaga tridactyla), either, and they are not closely related to them. They are spiny, though; their bodies are covered with hollow, barbless quills. Echidnas are monotremes, egg-laying mammals. The only other living monotreme is the platypus.", "76 cm", "10kg", "Throughout Australia.", "./images/mammals/echidna.jpg")
+let tasmanianDevil = new Mammals ("Tasmanian Devil", "5 years", "Mammals", "A predator, then eat meat from other animals such as wallabies and wombats", "The Tasmanian devil (Sarcophilus harrisii) is a carnivorous marsupial of the family Dasyuridae. Until recently, it was only found on the island state of Tasmania, but it has been reintroduced to New South Wales in mainland Australia, with a small breeding population. The size of a small dog, the Tasmanian devil became the largest carnivorous marsupial in the world, following the extinction of the thylacine in 1936. It is related to quolls, and distantly related to the thylacine. It is characterised by its stocky and muscular build, black fur, pungent odour, extremely loud and disturbing screech, keen sense of smell, and ferocity when feeding. The Tasmanian devil's large head and neck allow it to generate among the strongest bites per unit body mass of any extant predatory land mammal. It hunts prey and scavenges on carrion.", "70 cm", "10kg", "Tasmania", "./images/mammals/tasmania-devil.jpg")
+let quokka = new Mammals ("Quokka", "10 years", "Mammals", "Plant eaters, they munch on shrubs and grasses", "The Quokka, Setonix brachyurus, was described by early Dutch explorer, Willem de Vlamingh, 'as a kind of rat as big as a common cat'. His first sighting of the Quokka was on an island off the mouth of the Swan River. He named the island Rottenest ('rat nest') in honour of this sighting. The island is now known as Rottnest Island. Essentially the Quokka looks very much like other wallabies.It has short, very coarse and thick grey-brown fur over most of the body with lighter parts underneath. Its facial features consist of a naked nose on a short, broad face with rounded furry ears.The tail is relatively short and mostly devoid of hair. In contrast, the hair on the feet extends to cover its claws.", "50 cm", "3kg", "Only found on Rottnest Island and a few places on mainland Western Australia.", "./images/mammals/quokka.jpg")
 
 let mammalArray = [echidna, tasmanianDevil, quokka]
 
+//ATTACHING TO THE PAGE & SIDEBAR//
 let sideMammals = document.querySelector(".sidebar")
+let mammalContent = document.querySelector(".welcome_container")
+let originalMammal = mammalContent.innerHTML
+let selectedMammal = "";
 
-mammalArray.forEach (animal =>  {
-   let mammalsGroup = document.createElement("div")
-    mammalsGroup.className = "sidebar_item"
-    mammalsGroup.textContent = animal.name
-    sideMammals.appendChild(mammalsGroup)
+//substring for showing max 200 words in the description//
+const textLength = description =>
+    description.substring(0, 200) + (description.length > 200 ? "..." : "");
+
+//FUNCTION TO BE ABLE TO CLICK ON THE SIDEBAR//
+mammalArray.forEach(mammal => {
+    let mammalsGroup = document.createElement("div");
+    mammalsGroup.classList.add("sidebar_item");
+    mammalsGroup.textContent = mammal.name;
+    sideMammals.appendChild(mammalsGroup);
+
+    //EVENT LISTENERS - MAKE IT POSSIBLE TO CLICK SIDEBAR AND SHOW TXT & IMG//
+    mammalsGroup.addEventListener("click", () => {
+        document.querySelectorAll(".sidebar_item").forEach(element => {
+            element.classList.remove("active_item");
+        });
+        if (selectedMammal === mammal.name) {
+            mammalContent.innerHTML = originalMammal;
+            selectedMammal = "";
+        } else {
+        mammalsGroup.classList.add("active_item");
+        document.querySelector(".welcome_container").innerHTML = `
+            <h1>${mammal.name}</h1>
+            <img class="animal_img" src="${mammal.image}"></img>
+            <a class="page_link container_text" href="./mammals.html"> Group: ${mammal.group}</a>
+            <p class="container_text">Food: ${mammal.food}</p>
+            <p class="container_text less">Description: ${textLength(mammal.description)}</p>
+            <p class="container_text more">Description: ${mammal.description}</p>
+            <p class="container_text more">Length: ${mammal.length}</p>
+            <p class="container_text more">Weight: ${mammal.weight}</p>
+            <p class="container_text more">Lifespan: ${mammal.lifespan}</p>
+            <p class="container_text more">Found: ${mammal.found}</p>
+            <button class="Btn">Read more..</button>`;
+          selectedMammal = mammal.name;
+        }
+        
+          let more = document.querySelectorAll(".more")
+          let less = document.querySelectorAll(".less")
+
+          more.forEach(item => item.style.display = "none")
+          less.forEach(item => item.style.display = "block")
+
+          let toggle = document.querySelector(".Btn")
+
+    //BUTTON ADD LISTENERS//
+    if (toggle){ 
+    toggle.addEventListener("click", () => {
+      if (more[0].style.display === "none") { //added index 0 because we are only checking if one element is hidden or not
+        more.forEach(text => text.style.display = "block");
+        less.forEach(text => text.style.display = "none");
+        toggle.textContent = "Read Less";
+      } else {
+        more.forEach(text => text.style.display = "none");
+        less.forEach(text => text.style.display = "block");
+        toggle.textContent = "Read More";
+      }
+    
+    })}
+  })
+});
+
+///Logic for the media query menu///
+const hamburger = document.querySelector('.hamburger_menu')
+const body = document.querySelector('.main_content')
+const backgroundPicture = document.querySelector('.background_image')
+
+let sidebarOn = false
+let userSidebarInput = false
+
+const toggleSidebar = () => {
+  let nav = document.querySelector('.navigation')
+  if (!sidebarOn) {
+    nav.className = 'navigation nav_move'
+    sidebarOn = true
+  } else {
+    nav.className = 'navigation nav_hide'
+    sidebarOn = false
+  }
+}
+
+///Checks whether to show or hide the sidebar based on width///
+const checkWindowSize = () => {
+  const windowSize = window.innerWidth
+  if (windowSize < 900) {
+    sidebarOn = true
+    toggleSidebar()
+  } else {
+    sidebarOn = false
+    toggleSidebar()
+  }
+}
+
+window.addEventListener('resize', checkWindowSize)
+hamburger.addEventListener('click', toggleSidebar)
+body.addEventListener('click', () => {
+  if (sidebarOn && window.innerWidth < 900) toggleSidebar()
 })
+backgroundPicture.addEventListener('click', () => {
+  if (sidebarOn && window.innerWidth < 900) toggleSidebar()
+})
+
+///Logic for the searchbar///
+const searchButton = document.querySelector('.search')
+const searchBox = document.querySelector('.search_box')
+
+const search = (clear = false) => {
+  let searchContent
+  if(!clear) {
+    searchContent = searchBox.value
+  } else {
+    searchContent = ''
+  }
+  searchContent = searchContent.toLowerCase()
+  let containers = document.querySelectorAll('.container_text')
+  let containerArray = Array.from(containers)
+  containerArray.forEach(container => {
+    let matchedWord
+    let indexes = []
+    let pageContent = container.textContent.toLowerCase()
+    for (let i = 0; i < pageContent.length; i++) {
+      matchedWord = ''
+      let broken = false
+      for (let j = 0, k = i; j < searchContent.length; j++, k++) {
+        if (searchContent.charAt(j) === pageContent.charAt(k)) {
+          matchedWord += pageContent.charAt(k)
+        } else {
+          broken = true
+          break
+        }
+      } if (!broken && matchedWord === searchContent) {
+        indexes.push(i)
+      }
+    }
+    highlighter(container, indexes, searchContent.length)
+  })
+}
+
+const highlighter = (container, indexes, wordLength) => {
+  let text = container.textContent
+  let result = ''
+  let lastIndex = 0
+  indexes.forEach(start => { 
+    let end = start + wordLength
+    result += text.slice(lastIndex, start)
+    result += `<span class='highlight'>${text.slice(start, end)}</span>`
+    lastIndex = end
+  });
+  result += text.slice(lastIndex)
+  container.innerHTML = result
+}
+
+searchBox.addEventListener('keydown', (e) => {
+  e.key === 'Enter' && search(false)
+})
+searchButton.addEventListener('click', ()=> search(false))
+searchBox.addEventListener('blur', ()=> search(true))
+
+checkWindowSize()

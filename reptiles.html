@@ -8,34 +8,39 @@
     <link rel="stylesheet" href="./fonts/fonts.css">
     <script src="./scripts/reptiles.js" defer></script>
   </head>
-  <body>
-    <header class="header">
-      <div class="header_logo">
-        <img class="header_image" src="./images/logo.png" alt="logo" height="150px" width="250px">
+<body>
+  <header class="header">
+    <div class="header_logo">
+      <img class="header_image" src="./images/logo.png" alt="logo" height="150px" width="250px">
+    </div>
+    <svg class="hamburger_menu" width="50px" height="50px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3.5,7 C3.22385763,7 3,6.77614237 3,6.5 C3,6.22385763 3.22385763,6 3.5,6 L20.5,6 C20.7761424,6 21,6.22385763 21,6.5 C21,6.77614237 20.7761424,7 20.5,7 L3.5,7 Z M3.5,12 C3.22385763,12 3,11.7761424 3,11.5 C3,11.2238576 3.22385763,11 3.5,11 L20.5,11 C20.7761424,11 21,11.2238576 21,11.5 C21,11.7761424 20.7761424,12 20.5,12 L3.5,12 Z M3.5,17 C3.22385763,17 3,16.7761424 3,16.5 C3,16.2238576 3.22385763,16 3.5,16 L20.5,16 C20.7761424,16 21,16.2238576 21,16.5 C21,16.7761424 20.7761424,17 20.5,17 L3.5,17 Z"/>
+    </svg>
+    <nav class="navigation">
+      <a href="index.html" class="nav_button">Home</a>
+      <a href="birds.html" class="nav_button">Birds</a>
+      <a href="mammals.html" class="nav_button">Mammals</a>
+      <a href="reptiles.html" class="nav_button active_nav">Reptiles</a>
+      <a href="aboutUs.html" class="nav_button">About Us</a>
+    </nav>
+  </header>
+  <main>
+    <div class="background_image">
+      <div class="search_container">
+        <input class='search_box' type="text" placeholder='search..' />
+        <svg class='search' fill='none' viewBox='0 0 15 15' xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M14.5 14.5L10.5 10.5M6.5 12.5C3.18629 12.5 0.5 9.81371 0.5 6.5C0.5 3.18629 3.18629 0.5 6.5 0.5C9.81371 0.5 12.5 3.18629 12.5 6.5C12.5 9.81371 9.81371 12.5 6.5 12.5Z" />
+        </svg>
       </div>
-      <nav class="navigation">
-        <a href="index.html" class="nav_button">Home</a>
-        <a href="birds.html" class="nav_button">Birds</a>
-        <a href="mammals.html" class="nav_button">Mammals</a>
-        <a href="reptiles.html" class="nav_button active_nav">Reptiles</a>
-        <a href="aboutUs.html" class="nav_button">About Us</a>
-      </nav>
-    </header>
-    <main>
-      <div class="background_image">
-        <div class="search_container">
-          <input class='search_box' type="text" placeholder='search..'/>
-          <svg class='search' fill='none' viewBox='0 0 15 15' xmlns="http://www.w3.org/2000/svg">
-            <path d="M14.5 14.5L10.5 10.5M6.5 12.5C3.18629 12.5 0.5 9.81371 0.5 6.5C0.5 3.18629 3.18629 0.5 6.5 0.5C9.81371 0.5 12.5 3.18629 12.5 6.5C12.5 9.81371 9.81371 12.5 6.5 12.5Z"/>
-          </svg>
-        </div>
-      </div>
-      <section class="main_content">
-        <div class="sidebar"></div>
+    </div>
+    <section class="main_content">
+      <div class="sidebar"></div>
 
-        <article class="welcome_container"></article>
-      </section>
-    </main>
-    <footer class="footer">&copy;Koala Mates</footer>
-  </body>
+      <article class="welcome_container"></article>
+    </section>
+  </main>
+  <footer class="footer">&copy;Koala Mates</footer>
+</body>
+
 </html>
