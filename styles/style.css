@@ -445,6 +445,7 @@ h1 {
   .welcome_container {
     padding: 0.5 2rem;
     padding-bottom: 2rem;
+    border-radius: 0;
     width: 100%;
     flex: 1 1 auto;
   }
