@@ -66,15 +66,15 @@ birdsArray.forEach(birds => {
     sidebar.appendChild(item);
 });
 
-
 // short summary
 function showShortSummary(birds) {
     content.innerHTML = `
     <h1>${birds.name}</h1>
-    <p class="container_text">Lifespan: ${birds.lifespan}</p>
-    <p class="container_text">Group: ${birds.group}</p>
     <img class="animal_img" src="${birds.image}">
-    <button class="Btn" id="readMoreBtn">Read More</button>
+    <a class="page_link container_text" href="./birds.html"> Group: ${birds.group}</a>
+    <p class="container_text">Food: ${birds.food}</p>
+    <p class="container_text">Description:${maxLength(birds.description)}</p>
+    <button class="Btn" id="readMoreBtn">Read more</button>
     `;
 
     document.querySelector("#readMoreBtn").onclick = () => showFullSummary(birds);
@@ -84,16 +84,16 @@ function showShortSummary(birds) {
 function showFullSummary(birds) {
     content.innerHTML = `
         <h1>${birds.name}</h1>
-        <p class="container_text">Lifespan: ${birds.lifespan}</p>
-        <p class="container_text">Group: ${birds.group}</p>
+        <img class="animal_img" src="${birds.image}">
+        <a class="page_link container_text" href="./birds.html"> Group: ${birds.group}</a>
         <p class="container_text">Food: ${birds.food}</p>
+        <p class="container_text">Description:${birds.description}</p>
         <p class="container_text">Length: ${birds.length}</p>
         <p class="container_text">Weight: ${birds.weight}</p>
+        <p class="container_text">Lifespan: ${birds.lifespan}</p>
         <p class="container_text">Found: ${birds.found}</p>
-        <img class="animal_img" src="${birds.image}">
-        <p class="container_text">Description:${birds.description}</p>
         
-        <button class="Btn" id="backBtn">Back for summary</button>
+        <button class="Btn" id="backBtn">Read less</button>
     `;
 
     document.querySelector("#backBtn").onclick = () => showShortSummary(birds);

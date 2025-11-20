@@ -142,6 +142,7 @@ main {
   border-style: solid;
   margin: 16px;
   border-radius: 20px;
+  width: 300px;
 }
 
 .animal_group,
@@ -174,6 +175,10 @@ main {
   width:80%;
   inset: 8%;
   border-radius: 16px;
+}
+
+h1 {
+  font-size: 2rem;
 }
 
 .intro_text{
