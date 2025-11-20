@@ -373,18 +373,22 @@ h1 {
   }
 
   .search_container:hover {
-    background-color: #6c584cd6;
+    background-color: #f0ead2bd;
+  }
+
+  .search_container:hover .search {
+    stroke: var(--color-primary);
   }
 
   .search_box {
     width: 0;
-    color: var(--background-secondary);
+    color: var(--color-primary);
     transition: all 0.4s ease-in-out;
   }
 
   .search_container:hover .search_box {
     width: clamp(120px, 30vw, 200px);
-    border-bottom: 1px solid var(--background-secondary);
+    border-bottom: 1px solid var(--color-primary);
   }
 
   main {
