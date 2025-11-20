@@ -68,14 +68,14 @@ function showFullSummary(reptile) {
   defaultMessage.innerHTML = `
        <h1>${reptile.name}</h1>
         <img class="animal_img" src="${reptile.image}">
-        <a class="page_link" href="./reptiles.html"> Group: ${reptile.group}</a>
-        <p class="intro_text"> Food: ${reptile.food}</p>
-        <p class="intro_text">${reptile.description}</p>
-        <p class="intro_text"> Length: ${reptile.length}</p>
-        <p class="intro_text"> Weight: ${reptile.weight}</p>
-        <p class="intro_text"> Lifespan: ${reptile.lifespan}</p>
-        <p class="intro_text"> Found: ${reptile.found}</p>
-        <button class=".Btn" id="backBtn">Read less</button>
+        <a class="page_link container_text" href="./reptiles.html"> Group: ${reptile.group}</a>
+        <p class="container_text"> Food: ${reptile.food}</p>
+        <p class="container_text">${reptile.description}</p>
+        <p class="container_text"> Length: ${reptile.length}</p>
+        <p class="container_text"> Weight: ${reptile.weight}</p>
+        <p class="container_text"> Lifespan: ${reptile.lifespan}</p>
+        <p class="container_text"> Found: ${reptile.found}</p>
+        <button class="Btn" id="backBtn">Read less</button>
     `;
 
   document.querySelector("#backBtn").onclick = () => showShortSummary(reptile);
@@ -88,7 +88,7 @@ function showShortSummary(reptile) {
         <a class="page_link" href="./reptiles.html"> Group: ${reptile.group}</a>
         <p class="intro_text"> Food: ${reptile.food}</p>
         <p class="intro_text">${maxLength(reptile.description)}</p>
-        <button class=".Btn" id="readMoreBtn">Read more</button>`;
+        <button class="Btn" id="readMoreBtn">Read more</button>`;
 
   document.querySelector("#readMoreBtn").onclick = () => showFullSummary(reptile);
 }
