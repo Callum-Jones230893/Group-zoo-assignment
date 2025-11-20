@@ -95,3 +95,4 @@ function showShortSummary(reptile) {
 
   document.querySelector("#readMoreBtn").onclick = () => showFullSummary(reptile);
 }
+
