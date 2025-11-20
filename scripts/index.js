@@ -138,6 +138,7 @@ const search = (clear = false) => {
   })
 }
 
+
 const highlighter = (container, indexes, wordLength) => {
   let text = container.textContent
   let result = ''
