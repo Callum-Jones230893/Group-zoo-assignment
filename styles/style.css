@@ -172,7 +172,7 @@ main {
   display: flex;
   flex-direction: column;
   height: fit-content;
-  padding: 28px;
+  padding: 16px;
   color: var(--color-primary);
   text-align: center;
   background-color: white;
@@ -196,6 +196,11 @@ main {
 .sidebar_item:hover,
 .animal_item:hover {
   transform: scale(1.06);
+  
+  color:var(--background-secondary);
+  background-color: var(--background-primary);
+  border-radius: 6px;
+  padding:2px 32px;
 }
 
 .welcome_container {
@@ -255,7 +260,13 @@ h1 {
 }
 
 .active_item {
-  text-decoration: underline;
+  text-decoration: none;
+
+  color:var(--background-secondary);
+  background-color: var(--background-primary);
+  border-radius: 6px;
+  padding:8px 16px;
+  text-decoration: none;
 }
 
 .container_text {
