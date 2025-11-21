@@ -321,7 +321,7 @@ h1 {
 
 @media (width < 900px) {
   .header {
-    height: 10%;
+    height: 10vh;
     padding: 0;
     position: fixed;
     top: 0;
