@@ -172,7 +172,7 @@ main {
   display: flex;
   flex-direction: column;
   height: fit-content;
-  padding: 28px;
+  padding: 16px;
   color: var(--color-primary);
   text-align: center;
   background-color: white;
@@ -238,10 +238,10 @@ h1 {
 }
 
 .animal_img {
-  object-fit: contain;
   object-position: center;
   max-width: 300px;
-  height: auto;
+  height: 300px;
+  width:100%;
   border-radius: 8px;
   aspect-ratio: 1 / 1;
   object-fit: cover;
@@ -255,7 +255,13 @@ h1 {
 }
 
 .active_item {
-  text-decoration: underline;
+  text-decoration: none;
+
+  color:var(--background-secondary);
+  background-color: var(--background-primary);
+  border-radius: 12px;
+  padding:8px 8px;
+  text-decoration: none;
 }
 
 .container_text {
@@ -322,7 +328,6 @@ h1 {
   }
 
   .navigation {
-    border-top: var(--background-tertiary) solid 1px;
     display: flex;
     flex-direction: column;
     position: fixed;

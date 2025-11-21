@@ -182,7 +182,7 @@ const highlighter = (container, indexes, wordLength) => {
 searchBox.addEventListener('keydown', (e) => {
   e.key === 'Enter' && search(false)
 })
-searchButton.addEventListener('click', ()=> search(false))
-searchBox.addEventListener('blur', ()=> search(true))
+searchButton.addEventListener('click', () => search(false))
+searchBox.addEventListener('blur', () => search(true))
 
 checkWindowSize()
